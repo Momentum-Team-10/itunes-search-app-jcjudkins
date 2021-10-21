@@ -22,10 +22,10 @@ REQUIREMENTS!!!!
 [x] Display results without refreshing page (preventDefault)
 [x] Results should include song details. TITLE is required. 
     -Consider Artist name, album title, album image, and release date 
-[] Restrict the number of results? Is there a way to find top 10? Needs a NULL response if nothing.
+[x] Restrict the number of results? Is there a way to find top 10? Needs a NULL response if nothing.
 [] Should handle if error comes back (not in 200 range) needs to show the user if there is an error.
-[] Allow user to click on song to play preview.
-[] Should be nicely sytled. User experience needs to be considered. (Easy to interact) 
+[x] Allow user to click on song to play preview.
+[x] Should be nicely sytled. User experience needs to be considered. (Easy to interact) 
 */
 const url = `https://itunes.apple.com/search?term=`;
 const searchLimit = '&limit=25';
@@ -59,7 +59,7 @@ function songSearch() {
         .then((data) => {
             for (let item of data.results) {
                 result.innerHTML +=
-                `<div class="content">
+                `<div class="box">
                 <img src= ${item.artworkUrl100}>
                 <div>Artist: ${item.artistName}</div>
                 <div>Song: ${item.trackName}</div>

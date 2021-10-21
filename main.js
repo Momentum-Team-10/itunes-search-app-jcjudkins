@@ -29,10 +29,10 @@ REQUIREMENTS!!!!
 */
 const url = `https://itunes.apple.com/search?term=`;
 const searchLimit = '&limit=25';
-const input = document.querySelector('#input')
-const result = document.querySelector('#result');
-const form = document.querySelector('#control')
-const searchButton = document.getElementById('button')
+const searchText = document.getElementById('search-text')
+const result = document.getElementById('result');
+const form = document.getElementById('search-form')
+const searchButton = document.getElementById('search-button')
 
 // input.addEventListener('input', function(){
 //     result.textContent = 
@@ -40,37 +40,46 @@ const searchButton = document.getElementById('button')
     
 // })
 
-//this should bring input text to artistInput but (FORM????)
-document.getElementById('button')('click', (e) => {
+//this is error free as of 0232 form clears 
+document.getElementById('search-button').addEventListener
+('click', (e) => {
     e.preventDefault();
-    const artistInput = document.getElementById('input').value;
-addArtist(artistInput);
-console.log(e.target.value)
+   console.log(e.target.value)
+   songSearch(form)
 form.reset();
 });
 
-
-
 //this function is to actually do the search on itunes
 function songSearch() {
-fetch(url + `${songObj}` + searchLimit)
-    .then((response) => response.json())
-    .then((data) => {
-        for (let item of data) {
-            renderArtistSong(item);
-        }
+    document.getElementById('result').innerHTML = ''
+    fetch(url + searchText.value + searchLimit)
+        .then((response) => response.json())
+        .then((data) => {
+            for (let item of data.results) {
+                result.innerHTML +=
+                `<div class='card'>
+                <img src= ${item.artworkUrl100}>
+                <div>Artist: ${item.artistName}</div>
+                <div>Song: ${item.trackName}</div>
+                <div>Album: ${item.collectionName}</div>
+                <audio id="audio" controls src=
+                ${item.previewURL}></audio>
+                </div>
+                `
+        } console.log()
     });
 }
 
 //sets 
-function renderArtistSong(songObj) {
-    const li = document.createElement('li');
-    li.artistName = songObj.artistName;
-    li.trackName = songObj.trackName;
-    li.collectionName = songObj.collectionName
-    renderInputText(li, songObj);
-    songlist.appendChild(li);
-}
+// function renderArtistSong(songObj) {
+//     document.getElementById('').innerHTML = ''
+//     const li = document.createElement('li');
+//     li.artistName = songObj.artistName;
+//     li.trackName = songObj.trackName;
+//     li.collectionName = songObj.collectionName
+//     renderInputText(li, songObj);
+//     songlist.appendChild(li);
+//}
 
 // function renderInputText(li, songObj) {
 //     li.innerHTML = 
@@ -82,3 +91,11 @@ function renderArtistSong(songObj) {
 // fetch('https://itunes.apple.com/search?term=`${artistInput}`&limit=25')
 //     .then(response => response.json())
 //     .then(data => console.log(data));
+
+// function renderArtistSong(songObj) {
+//     const li = document.createElement('li');
+//     li.artistName = songObj.artistName;
+//     li.trackName = songObj.trackName;
+//     li.collectionName = songObj.collectionName
+//     renderInputText(li, songObj);
+//     songlist.appendChild(li);

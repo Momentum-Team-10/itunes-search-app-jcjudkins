@@ -51,7 +51,7 @@ form.reset();
 });
 
 //this function is to actually do the search on itunes
-//Information is pulling but player is not
+//<audio> tag creates the player</audio>
 function songSearch() {
     document.getElementById('result').innerHTML = ''
     fetch(url + searchText.value + searchLimit)

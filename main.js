@@ -27,13 +27,57 @@ REQUIREMENTS!!!!
 [] Allow user to click on song to play preview.
 [] Should be nicely sytled. User experience needs to be considered. (Easy to interact) 
 */
-const musicSearch = document.createElement('div')
+const url = `https://itunes.apple.com/search?term=`;
+const searchLimit = '&limit=25';
+const input = document.querySelector('#input')
+const result = document.querySelector('#result');
+const form = document.querySelector('#control')
+const searchButton = document.getElementById('button')
+
+// input.addEventListener('input', function(){
+//     result.textContent = 
+//     this.value;
+    
+// })
+
+//this should bring input text to artistInput but (FORM????)
+document.getElementById('button')('click', (e) => {
+    e.preventDefault();
+    const artistInput = document.getElementById('input').value;
+addArtist(artistInput);
+console.log(e.target.value)
+form.reset();
+});
 
 
-formInput = document.createElement('FORM'){
-    formInput.
-};
 
+//this function is to actually do the search on itunes
+function songSearch() {
+fetch(url + `${songObj}` + searchLimit)
+    .then((response) => response.json())
+    .then((data) => {
+        for (let item of data) {
+            renderArtistSong(item);
+        }
+    });
+}
+
+//sets 
+function renderArtistSong(songObj) {
+    const li = document.createElement('li');
+    li.artistName = songObj.artistName;
+    li.trackName = songObj.trackName;
+    li.collectionName = songObj.collectionName
+    renderInputText(li, songObj);
+    songlist.appendChild(li);
+}
+
+// function renderInputText(li, songObj) {
+//     li.innerHTML = 
+//     <h2>${songObj.collectionName}`</h2>
+//     <input
+
+// }
 
 // fetch('https://itunes.apple.com/search?term=`${artistInput}`&limit=25')
 //     .then(response => response.json())

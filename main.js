@@ -17,10 +17,10 @@ and then allow the user to select and play song previews.
 
 REQUIREMENTS!!!!
 
-[] A user can search by artist or band name.
-[] Validate the search (require) request so nothing is sent that is empty.
-[] Display results without refreshing page (preventDefault)
-[] Results should include song details. TITLE is required. 
+[x] A user can search by artist or band name.
+[x] Validate the search (require) request so nothing is sent that is empty.
+[x] Display results without refreshing page (preventDefault)
+[x] Results should include song details. TITLE is required. 
     -Consider Artist name, album title, album image, and release date 
 [] Restrict the number of results? Is there a way to find top 10? Needs a NULL response if nothing.
 [] Should handle if error comes back (not in 200 range) needs to show the user if there is an error.
@@ -50,6 +50,7 @@ form.reset();
 });
 
 //this function is to actually do the search on itunes
+//Information is pulling but player is not
 function songSearch() {
     document.getElementById('result').innerHTML = ''
     fetch(url + searchText.value + searchLimit)
@@ -62,6 +63,7 @@ function songSearch() {
                 <div>Artist: ${item.artistName}</div>
                 <div>Song: ${item.trackName}</div>
                 <div>Album: ${item.collectionName}</div>
+                <div>Released: ${moment(item.releaseDate).format('MMM Do YYYY')}</div>
                 <audio id="audio" controls src=
                 ${item.previewURL}></audio>
                 </div>

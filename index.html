@@ -7,21 +7,26 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.20.1/moment.min.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
   <title>My Music Search</title>
+  <style>
+  </style>
 </head>
 <body>
-  <section class="section">
-    <h1 class="title">Now Playing</h1>
-    <h2 class="subtitle">
+  <section class="hero is-primary is-small">
+    <figure class="image is-128x128">
+      <img class="is-rounded" src="headphones.jpg">
+    </figure>
+    <h1 class="title is-size-1">Now Playing</h1>
+    <h2 class="subtitle" id="audioPlayer">
       Player will go in this section
     </h2>
   </section>
   <section class="hero is-small">
     <div class="hero-body">
       <p class="title">
-        My Itune's Music Search
+        Find a BANGER!
       </p>
       <p class="subtitle">
-        Find a BANGER!
+        My Itune's Music Search
       </p>
     </div>
   </section>
@@ -38,13 +43,9 @@
   </div>
 </form>
   <br>
-  <section class="section is-large">
-    <h1 class="title">Found Music Section</h1>
-    <h2 class="subtitle">
-      A simple container to hold  <strong>search results</strong>, like the one you're currently reading.
-      <p id="result"></p>
-    </h2>
-    <div class="tile">
+  <section class="content">
+    <h1 class="title">Just Push Play!</h1>
+    <div class="column card-content" id="result">
 
       <!-- The magical tile element! -->
     </div>

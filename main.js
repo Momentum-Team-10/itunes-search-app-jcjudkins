@@ -33,6 +33,7 @@ const searchText = document.getElementById('search-text')
 const result = document.getElementById('result');
 const form = document.getElementById('search-form')
 const searchButton = document.getElementById('search-button')
+const audioPlayer = document.getElementById('audioPlayer')
 
 // input.addEventListener('input', function(){
 //     result.textContent = 
@@ -58,14 +59,14 @@ function songSearch() {
         .then((data) => {
             for (let item of data.results) {
                 result.innerHTML +=
-                `<div class='card'>
+                `<div class="content">
                 <img src= ${item.artworkUrl100}>
                 <div>Artist: ${item.artistName}</div>
                 <div>Song: ${item.trackName}</div>
                 <div>Album: ${item.collectionName}</div>
                 <div>Released: ${moment(item.releaseDate).format('MMM Do YYYY')}</div>
                 <audio id="audio" controls src=
-                ${item.previewURL}></audio>
+                ${item.previewUrl}></audio>
                 </div>
                 `
         } console.log()
